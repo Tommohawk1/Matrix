@@ -1,0 +1,14 @@
+#Solve the quadratic equation ax**2 + bx + c = 0
+#Coeffients a, b and c are provided by the user
+import complex math module
+import cmath
+
+a = float(input('Enter a: ')) b = float(input('Enter b: ')) c = float(input('Enter c: '))
+
+#calculate the discriminant
+d = (b*2) - (4a*c)
+
+#find two solutions
+sol1 = (-b-cmath.sqrt(d))/(2a) sol2 = (-b+cmath.sqrt(d))/(2a)
+
+print('The solution are {0} and {1}'.format(sol1,sol2))
