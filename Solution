@@ -1,18 +1,41 @@
 from sympy import Symbol
 from sympy.solvers import solve
 
+twobytwo = [["A", "B"], ["C", "D"]]
+threebythree = [["A", "B", "C"], ["D", "E", "F"], ["G", "H", "I"]]
+
+def matrixtypefirst():
+    c = input('''What is the size of the first matrix?
+    a : 2x2 matrix
+    b : 3x3 matrix
+    ''')
+    return c
+
+def matrixtypesecond(): 
+    d = input('''What is the size of the next matrix?
+    a : 2x2 matrix
+    b : 3x3 matrix
+    ''')
+    return d
+
 def visualmatrixtwo(a):
     print(a[0])
     print(a[1])
-
+def visualmatrixthree(b):
+    print([b[0]])
+    print([b[1]])
+    print([b[2]])
+    
+#---------------------------------------------------------------------------------    
+#2x2 matrix procedure
 def matrixtwoprocess():    
     A = int(input("Enter a Value for A: "))
     B = int(input("Enter a Value for B: "))
     C = int(input("Enter a Value for C: "))
     D = int(input("Enter a Value for D: "))
             
-    Matrix = [[A, B], 
-              [C, D]]
+    MatrixCore = [[A, B], 
+                  [C, D]]
     
     x = Symbol('x')
     Ae = A - x
@@ -21,20 +44,83 @@ def matrixtwoprocess():
     De = D - x
     
     print ("")
-    visualmatrixtwo(Matrix)
+    visualmatrixtwo(MatrixCore)
     print ("")
+    print("The determinant of this matrix is: " + str((A*D) - (B*C)))
     solutionstwo = solve((Ae * De) - (Be * Ce))
-    print("The EigenValues are: " + str(solutionstwo[0]) + " and " + str(solutionstwo[1]))
+    print("The Eigenvalues are: " + str(solutionstwo[0]) + " and " + str(solutionstwo[1]))
 
+#-----------------------------------------------------------------------------------
+#3x3 matrix procedure
+def matrixthreeprocess():
+    A = int(input("Enter a Value for A: "))
+    B = int(input("Enter a Value for B: "))
+    C = int(input("Enter a Value for C: "))
+    D = int(input("Enter a Value for D: "))
+    E = int(input("Enter a Value for E: "))
+    F = int(input("Enter a Value for F: "))
+    G = int(input("Enter a Value for G: "))
+    H = int(input("Enter a Value for H: "))
+    I = int(input("Enter a Value for I: "))
+    
+    MatrixCore = [[A, B, C],
+                  [D, E, F],
+                  [G, H, I]]
+    
+    determinantthree = ((A * E * I) + (B * F * G) + (C * D * H)) - ((B * D * I) + (A * F * H) + (C * E * G))
+    x = Symbol('x')
+    Ae = -A + x
+    Be = -B
+    Ce = -C
+    De = -D
+    Ee = -E + x
+    Fe = -F
+    Ge = -G
+    He = -H
+    Ie = -I + x
+    
+    addfirstdiagonal = (Ae * Ee * Ie)
+    addseconddiagonal = (Be * Fe * Ge)
+    addthirddiagonal = (Ce * De * He)
+    subfirstdiagonal = (Be * De * Ie)
+    subseconddiagonal = (Ae * Fe * He)
+    subthirddiagonal = (Ce * Ee * Ge)
+    
+    pos = (addfirstdiagonal + addseconddiagonal + addthirddiagonal)
+    neg = (subfirstdiagonal + subseconddiagonal + subthirddiagonal)
+    
+    solutionsthree = (solve(pos - neg), x)
+    
+    print("")
+    visualmatrixthree(MatrixCore)
+    print("The determinant of this matrix is : " + str(determinantthree))
+    if len(solutionsthree) == 1:
+         print("The Eigenvalue is: " + str(solutionsthree[0]))
+    elif len(solutionsthree) == 2:
+         print("The Eigenvalues are: " + str(solutionsthree[0]) + "and " + str(solutionsthree[1]))
+    else:
+        print("The Eigenvalues are: " + str(solutionsthree[0]) + ", " + str(solutionsthree[1]) + "and " + str(solutionsthree[2]))
+    
+    
+    
+    
+#------------------------------------------------------------------------------------
+#Main Loop/Data
 T = int(input("How many matrices do you want to investigate?: "))
-matrixtype = input('''What is the size of the matrix?
-a : 2x2 matrix
-b : 3x3 matrix
-'''
-print(str(Matrix[0]))
-print(str(Matrix[1]))
-print("")
-
+e = matrixtypefirst()
 while T != 0:
-    matrixtwoprocess()
-    T -= 1
+    if e == "a":
+        print(twobytwo[0])
+        print(twobytwo[1])
+        print("")
+        matrixtwoprocess()
+        T -= 1
+    elif e == "b":
+        print(threebythree[0])
+        print(threebythree[1])
+        print(threebythree[2])
+        print("")
+        matrixthreeprocess()
+        T -= 1
+    else:
+        print ("Please enter 'a' or 'b'...")
