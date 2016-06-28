@@ -27,7 +27,10 @@ def matrixtwoprocess():
     print("The EigenValues are: " + str(solutionstwo[0]) + " and " + str(solutionstwo[1]))
 
 T = int(input("How many matrices do you want to investigate?: "))
-print("")
+matrixtype = input('''What is the size of the matrix?
+a : 2x2 matrix
+b : 3x3 matrix
+'''
 print(str(Matrix[0]))
 print(str(Matrix[1]))
 print("")
