@@ -1,22 +1,37 @@
 from sympy import Symbol
 from sympy.solvers import solve
 
-A = int(input("Enter a Value: "))
-B = int(input("Enter a Value: "))
-C = int(input("Enter a Value: "))
-D = int(input("Enter a Value: "))
-        
-Matrix = [[A, B], 
-          [C, D]]
+def visualmatrixtwo(a):
+    print(a[0])
+    print(a[1])
 
-x = Symbol('x')
-Ae = A - x
-Be = B
-Ce = C
-De = D - x
+def matrixtwoprocess():    
+    A = int(input("Enter a Value for A: "))
+    B = int(input("Enter a Value for B: "))
+    C = int(input("Enter a Value for C: "))
+    D = int(input("Enter a Value for D: "))
+            
+    Matrix = [[A, B], 
+              [C, D]]
+    
+    x = Symbol('x')
+    Ae = A - x
+    Be = B
+    Ce = C
+    De = D - x
+    
+    print ("")
+    visualmatrixtwo(Matrix)
+    print ("")
+    solutionstwo = solve((Ae * De) - (Be * Ce))
+    print("The EigenValues are: " + str(solutionstwo[0]) + " and " + str(solutionstwo[1]))
 
-solutions = solve((Ae * De) - (Be * Ce))
+T = int(input("How many matrices do you want to investigate?: "))
+print("")
+print(str(Matrix[0]))
+print(str(Matrix[1]))
+print("")
 
-
-
-print("The EigenValues are: " + str(solutions[0]) + " and " + str(solutions[1]))
+while T != 0:
+    matrixtwoprocess()
+    T -= 1
