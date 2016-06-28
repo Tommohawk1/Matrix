@@ -1,0 +1,22 @@
+from sympy import Symbol
+from sympy.solvers import solve
+
+A = int(input("Enter a Value: "))
+B = int(input("Enter a Value: "))
+C = int(input("Enter a Value: "))
+D = int(input("Enter a Value: "))
+        
+Matrix = [[A, B], 
+          [C, D]]
+
+x = Symbol('x')
+Ae = A - x
+Be = B
+Ce = C
+De = D - x
+
+solutions = solve((Ae * De) - (Be * Ce))
+
+
+
+print("The EigenValues are: " + str(solutions[0]) + " and " + str(solutions[1]))
