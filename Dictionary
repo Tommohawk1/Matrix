@@ -2,29 +2,39 @@ import string
 
 alphabet = list(string.ascii_uppercase)
 
-matrices = {"dimensions" : [["A", "B"], ["C", "D"]]
+matrices = {"dimensions" : [[["A", "B"], ["C", "D"]], ["A", "B", "C"], ["D", "E", "F"], ["G", "H", "I"]],
+"values" : alphabet
             }
+
+def start():
+    usertype = input('''Which type of matrix do you want to add? :
+    a: 2x2 matrix
+    b: 3x3 matrix 
+    ''')
+    
+    if usertype == 'a':
+        for y in range(25):
+            matrices["values"][y] = matrices["dimensions"][0]
+    elif usertype == 'b':
+        for y in range(25):
+            matrices["values"][y] = matrices["dimensions"][1]
 
 def matricestwo():
    T = int(input("How many matrices do you want to add? (up to 26) : "))
 
    while T > 0:
-       alphabet[T - 1] = matrices["dimensions"]
        i = 0
        while i <= 1:
            x = 0
            while x <= 1:
-               alphabet[T - 1][i][x] = int(input("Enter a Value for " + str(alphabet[T - 1][i][x]) + " : "))
+               matrices["values"][T - 1][i][x] = int(input("Enter a Value for " + str(matrices["values"][T - 1][i][x]) + " : "))
                x += 1
            i += 1 
-       T -= 1
-
-    
+       T -= 1     
+       
+start()
 matricestwo()
 
-print (alphabet[1][0])
-print (alphabet[1][1])
-print (alphabet[0][0])
-print (alphabet[0][1])           
-            
-            
+print(matrices["values"][1])
+print(matrices["values"][0])
+
