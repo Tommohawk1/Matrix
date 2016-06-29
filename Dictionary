@@ -1,0 +1,30 @@
+import string
+
+alphabet = list(string.ascii_uppercase)
+
+matrices = {"dimensions" : [["A", "B"], ["C", "D"]]
+            }
+
+def matricestwo():
+   T = int(input("How many matrices do you want to add? (up to 26) : "))
+
+   while T > 0:
+       alphabet[T - 1] = matrices["dimensions"]
+       i = 0
+       while i <= 1:
+           x = 0
+           while x <= 1:
+               alphabet[T - 1][i][x] = int(input("Enter a Value for " + str(alphabet[T - 1][i][x]) + " : "))
+               x += 1
+           i += 1 
+       T -= 1
+
+    
+matricestwo()
+
+print (alphabet[1][0])
+print (alphabet[1][1])
+print (alphabet[0][0])
+print (alphabet[0][1])           
+            
+            
