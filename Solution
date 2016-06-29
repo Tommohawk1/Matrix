@@ -1,8 +1,16 @@
 from sympy import Symbol
 from sympy.solvers import solve
+import os
+
+clear = lambda: os.system('cls')
 
 twobytwo = [["A", "B"], ["C", "D"]]
 threebythree = [["A", "B", "C"], ["D", "E", "F"], ["G", "H", "I"]]
+
+def printthree():
+    print(threebythree[0])
+    print(threebythree[1])
+    print(threebythree[2])
 
 def matrixtypefirst():
     c = input('''What is the size of the matrix?
@@ -46,31 +54,37 @@ def matrixtwoprocess():
 #-----------------------------------------------------------------------------------
 #3x3 matrix procedure
 def matrixthreeprocess():
-    A = int(input("Enter a Value for A: "))
-    B = int(input("Enter a Value for B: "))
-    C = int(input("Enter a Value for C: "))
-    D = int(input("Enter a Value for D: "))
-    E = int(input("Enter a Value for E: "))
-    F = int(input("Enter a Value for F: "))
-    G = int(input("Enter a Value for G: "))
-    H = int(input("Enter a Value for H: "))
-    I = int(input("Enter a Value for I: "))
+    i = 0
+    while i <= 2:
+        x = 0
+        while x <= 2 :
+            clear()
+            printthree()
+            A = int(input("Enter a Value for " + threebythree[i][x] + " : "))
+            threebythree[i][x] = A
+            x += 1
+        i += 1    
+    MatrixCore = [[threebythree[0][0], threebythree[0][1], threebythree[0][2]],
+                  [threebythree[1][0], threebythree[1][1], threebythree[1][2]],
+                  [threebythree[2][0], threebythree[2][1], threebythree[2][2]]]
     
-    MatrixCore = [[A, B, C],
-                  [D, E, F],
-                  [G, H, I]]
-    
-    determinantthree = ((A * E * I) + (B * F * G) + (C * D * H)) - ((B * D * I) + (A * F * H) + (C * E * G))
+    determinantthree = { ((MatrixCore[0][0] * MatrixCore[1][1] * MatrixCore[2][2]) + 
+                        (MatrixCore[0][1] * MatrixCore[1][2] * MatrixCore[2][0]) + 
+                        (MatrixCore[0][2] * MatrixCore[1][0] * MatrixCore[2][1])) - 
+                        ((MatrixCore[0][1] * MatrixCore[1][0] * MatrixCore[2][2]) + 
+                        (MatrixCore[0][0] * MatrixCore[1][2] * MatrixCore[2][1]) + 
+                        (MatrixCore[0][2] * MatrixCore[1][1] * MatrixCore[2][0]))
+                        }
     x = Symbol('x')
-    Ae = -A + x
-    Be = -B
-    Ce = -C
-    De = -D
-    Ee = -E + x
-    Fe = -F
-    Ge = -G
-    He = -H
-    Ie = -I + x
+    Ae = (-1 * threebythree[0][0]) + x
+    Be = (-1 * threebythree[0][1])
+    Ce = (-1 * threebythree[0][2])
+    De = (-1 * threebythree[1][0])
+    Ee = (-1 * threebythree[1][1]) + x
+    Fe = (-1 * threebythree[1][2])
+    Ge = (-1 * threebythree[2][0])
+    He = (-1 * threebythree[2][1])
+    Ie = (-1 * threebythree[2][2]) + x
     
     addfirstdiagonal = (Ae * Ee * Ie)
     addseconddiagonal = (Be * Fe * Ge)
@@ -92,7 +106,7 @@ def matrixthreeprocess():
     elif len(solutionsthree) == 2:
          print("The Eigenvalues are: " + str(solutionsthree[0]) + " and " + str(solutionsthree[1]))
     else:
-        print("The Eigenvalues are: " + str(solutionsthree[0]) + " , " + str(solutionsthree[1]) + "and " + str(solutionsthree[2]))
+        print("The Eigenvalues are: " + str(solutionsthree[0]) + " , " + str(solutionsthree[1]) + " and " + str(solutionsthree[2]))
     
     
     
