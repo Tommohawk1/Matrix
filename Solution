@@ -6,19 +6,23 @@ clear = lambda: os.system('cls')
 
 twobytwo = [["A", "B"], ["C", "D"]]
 threebythree = [["A", "B", "C"], ["D", "E", "F"], ["G", "H", "I"]]
-
+#---------------------------------------------------------------------------------  
+def printtwo():
+    print(twobytwo[0])
+    print(twobytwo[1])
+#---------------------------------------------------------------------------------  
 def printthree():
     print(threebythree[0])
     print(threebythree[1])
     print(threebythree[2])
-
+#---------------------------------------------------------------------------------  
 def matrixtypefirst():
     c = input('''What is the size of the matrix?
     a : 2x2 matrix
     b : 3x3 matrix
     ''')
     return c
-
+#---------------------------------------------------------------------------------  
 def visualmatrixtwo(a):
     print(a[0])
     print(a[1])
@@ -30,24 +34,31 @@ def visualmatrixthree(b):
 #---------------------------------------------------------------------------------    
 #2x2 matrix procedure
 def matrixtwoprocess():    
-    A = int(input("Enter a Value for A: "))
-    B = int(input("Enter a Value for B: "))
-    C = int(input("Enter a Value for C: "))
-    D = int(input("Enter a Value for D: "))
-            
-    MatrixCore = [[A, B], 
-                  [C, D]]
+    i = 0
+    while i <= 1:
+        x = 0
+        while x <= 1 :
+            clear()
+            printtwo()
+            A = int(input("Enter a Value for " + twobytwo[i][x] + " : "))
+            twobytwo[i][x] = A
+            x += 1
+        i += 1    
+    MatrixCore = [[twobytwo[0][0], twobytwo[0][1]], 
+                  [twobytwo[1][0], twobytwo[1][1]]]
     
     x = Symbol('x')
-    Ae = A - x
-    Be = B
-    Ce = C
-    De = D - x
+    Ae = MatrixCore[0][0] - x
+    Be = MatrixCore[0][1]
+    Ce = MatrixCore[1][0]
+    De = MatrixCore[1][1] - x
+    
+    determinanttwo = (MatrixCore[0][0] * MatrixCore[1][1]) - (MatrixCore[0][1] * MatrixCore[1][0])
     
     print ("")
     visualmatrixtwo(MatrixCore)
     print ("")
-    print("The determinant of this matrix is: " + str((A*D) - (B*C)))
+    print("The determinant of this matrix is: " + str(determinanttwo))
     solutionstwo = solve((Ae * De) - (Be * Ce))
     print("The Eigenvalues are: " + str(solutionstwo[0]) + " and " + str(solutionstwo[1]))
 
