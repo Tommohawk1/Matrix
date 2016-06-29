@@ -5,18 +5,11 @@ twobytwo = [["A", "B"], ["C", "D"]]
 threebythree = [["A", "B", "C"], ["D", "E", "F"], ["G", "H", "I"]]
 
 def matrixtypefirst():
-    c = input('''What is the size of the first matrix?
+    c = input('''What is the size of the matrix?
     a : 2x2 matrix
     b : 3x3 matrix
     ''')
     return c
-
-def matrixtypesecond(): 
-    d = input('''What is the size of the next matrix?
-    a : 2x2 matrix
-    b : 3x3 matrix
-    ''')
-    return d
 
 def visualmatrixtwo(a):
     print(a[0])
@@ -89,7 +82,7 @@ def matrixthreeprocess():
     pos = (addfirstdiagonal + addseconddiagonal + addthirddiagonal)
     neg = (subfirstdiagonal + subseconddiagonal + subthirddiagonal)
     
-    solutionsthree = (solve(pos - neg), x)
+    solutionsthree = solve(pos - neg)
     
     print("")
     visualmatrixthree(MatrixCore)
@@ -97,9 +90,9 @@ def matrixthreeprocess():
     if len(solutionsthree) == 1:
          print("The Eigenvalue is: " + str(solutionsthree[0]))
     elif len(solutionsthree) == 2:
-         print("The Eigenvalues are: " + str(solutionsthree[0]) + "and " + str(solutionsthree[1]))
+         print("The Eigenvalues are: " + str(solutionsthree[0]) + " and " + str(solutionsthree[1]))
     else:
-        print("The Eigenvalues are: " + str(solutionsthree[0]) + ", " + str(solutionsthree[1]) + "and " + str(solutionsthree[2]))
+        print("The Eigenvalues are: " + str(solutionsthree[0]) + " , " + str(solutionsthree[1]) + "and " + str(solutionsthree[2]))
     
     
     
@@ -107,13 +100,14 @@ def matrixthreeprocess():
 #------------------------------------------------------------------------------------
 #Main Loop/Data
 T = int(input("How many matrices do you want to investigate?: "))
-e = matrixtypefirst()
 while T != 0:
+    e = matrixtypefirst()
     if e == "a":
         print(twobytwo[0])
         print(twobytwo[1])
         print("")
         matrixtwoprocess()
+        print("")
         T -= 1
     elif e == "b":
         print(threebythree[0])
@@ -121,6 +115,7 @@ while T != 0:
         print(threebythree[2])
         print("")
         matrixthreeprocess()
+        print("")
         T -= 1
     else:
         print ("Please enter 'a' or 'b'...")
