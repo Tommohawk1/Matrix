@@ -385,3 +385,21 @@ def start():
       
 #This calls the procedure 'start', which starts the program:
 start()
+
+#Uses of eigenvalues:
+
+#Eigenvalues were used by Claude Shannon to determine the theoretical limit to how much information can be transmitted 
+#through a communication medium like your telephone line or through the air. This is done by calculating the eigenvectors 
+#and eigenvalues of the communication channel (expressed a matrix), and then waterfilling on the eigenvalues.
+
+#The eigenvalues are then, in essence, the gains of the fundamental modes of the channel, which themselves are 
+#captured by the eigenvectors.
+
+#Google uses the eigenvector corresponding to the maximal eigenvalue of the Google matrix to determine the rank 
+#of a page for search.
+
+#Eigenvectors are fundamental to principal components analysis which is commonly used for dimensionality reduction 
+#in face recognition and other machine learning applications.
+
+#Eigenvectors can also be used for latent semantic analysis, a NLP technique for extracting topics and concepts 
+#from text documents.
