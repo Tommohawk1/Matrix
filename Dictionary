@@ -4,6 +4,7 @@ matrices = {"dimensions" : [[[0, 0], [0, 0]], [[0, 0, 0], [0, 0, 0], [0, 0, 0]]]
 "alphabet" : list(string.ascii_uppercase)
             }
 
+
 basematrix = [["A", "B"], ["C", "D"]]
 solutionmatrixtwo = matrices["dimensions"][0]
 
@@ -29,7 +30,7 @@ def matricestwo():
        while i <= 1:
            x = 0
            while x <= 1:
-               matrices["alphabet"][T - 1][i][x] = int(input("Enter a Value for " + str(matrices["alphabet"][T-1][i][x] + " : ")))
+               matrices["alphabet"][T - 1][i][x] = int(input("Enter a Value for " + str(matrices["alphabet"][T-1][i][x]) + " : "))
                x += 1
            i += 1 
        T -= 1
@@ -40,10 +41,12 @@ def matricestwo():
            g = 0
            while g <= 1:
                solutionmatrixtwo[z][g] += (matrices["alphabet"][totaladd - 1][z][g])
+               print(matrices["alphabet"][totaladd - 1][z][g])
                g += 1
            z += 1
-       totaladd -= 1       
-        
+       totaladd -= 1   
+       
+       
         
        
 start()
@@ -53,7 +56,3 @@ print(matrices["alphabet"][1])
 print(matrices["alphabet"][0])
 print(solutionmatrixtwo)
             
-
-print(matrices["values"][1])
-print(matrices["values"][0])
-
