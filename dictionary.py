@@ -1,4 +1,6 @@
 import string
+import copy
+
 
 matrices = {"dimensions" : [[[0, 0], [0, 0]], [[0, 0, 0], [0, 0, 0], [0, 0, 0]]],
 "alphabet" : list(string.ascii_uppercase)
@@ -16,7 +18,7 @@ def start():
     
     if usertype == 'a':
         for y in range(25):
-            matrices["alphabet"][y] = matrices["dimensions"][0]
+            matrices["alphabet"][y] = copy.deepcopy(matrices["dimensions"][0])
     elif usertype == 'b':
         for y in range(25):
             matrices["alphabet"][y] = matrices["dimensions"][1]
@@ -26,13 +28,13 @@ def matricestwo():
    totaladd = T
 
    while T > 0:
-       i = 0
-       while i <= 1:
-           x = 0
-           while x <= 1:
-               matrices["alphabet"][T - 1][i][x] = int(input("Enter a Value for " + str(matrices["alphabet"][T-1][i][x]) + " : "))
-               x += 1
-           i += 1 
+       row = 0
+       while row <= 1:
+           col = 0
+           while col <= 1:
+               matrices["alphabet"][T - 1][row][col] = int(input("Enter a Value for " + str(matrices["alphabet"][T-1][row][col]) + " : "))
+               col += 1
+           row += 1 
        T -= 1
     
    while totaladd > 0:
@@ -45,14 +47,14 @@ def matricestwo():
                g += 1
            z += 1
        totaladd -= 1   
-       
-       
+      
+      
         
        
 start()
+
 matricestwo()
 
 print(matrices["alphabet"][1])
 print(matrices["alphabet"][0])
 print(solutionmatrixtwo)
-            
